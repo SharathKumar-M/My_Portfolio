@@ -65,7 +65,7 @@ export default function Home() {
               SHARATH
             </div>
             <div className="text-4xl md:text-6xl font-bold font-mono text-gray-100 animate-fade-in-up">
-              M
+              ///M
             </div>
 
             <div className="text-xl md:text-2xl font-medium text-cyan-400 h-10">
