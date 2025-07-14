@@ -37,11 +37,11 @@ module.exports = {
       boxShadow: {
         cyan: '0 0 10px #22d3ee',
         neon: "0 0 10px #39ff14, 0 0 20px #39ff14",
-        glass: "0 4px 30px rgba(0, 0, 0, 0.3)",
+        glass: "0 4px 30px rgba(0, 0, 0, 0.01)",
       },
       backgroundImage: {
         "cyber-glow":
-          "radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.1), transparent 80%)",
+          "radial-gradient(circle at 50% 50%, rgba(23, 25, 25, 0.02), transparent 80%)",
         "hero-rainbow":
           "linear-gradient(135deg, #00bfff, #a259ff, #ff00ff, #00ff9c)",
       },

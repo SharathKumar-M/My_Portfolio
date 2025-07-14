@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Mail, Phone, MapPin, Linkedin, Github, Instagram, Twitter } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import Notification from "./ui/Notification";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [showNotification, setShowNotification] = useState(false);
+  const formRef = useRef(null);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:sharathm6667@gmail.com?subject=${encodeURIComponent(
-      form.subject
-    )}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
-    window.location.href = mailtoLink;
+
+    try {
+      await emailjs.sendForm(
+        "service_0c7tgw9",
+        "template_d6t8qt6",
+        formRef.current,
+        "Zh6ZKtLQzzMCTeJQK"
+      );
+
+      setShowNotification(true);
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("❌ Failed to send message. Please try again later.");
+    }
   };
 
   return (
@@ -31,47 +46,17 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="neuromorphic p-8 rounded-3xl">
             <h3 className="text-2xl font-bold text-[var(--cyber-blue)] mb-6 font-mono">Send Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)]"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)]"
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={form.subject}
-                onChange={handleChange}
-                required
-                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)]"
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                value={form.message}
-                onChange={handleChange}
-                rows={6}
-                required
-                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)] resize-none"
-              ></textarea>
-              <button
-                type="submit"
-                className="w-full neuromorphic text-white font-semibold glow-effect hover:glow-effect transition-all duration-300 px-4 py-2 rounded-md"
-              >
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required
+                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)]" />
+              <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required
+                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)]" />
+              <input type="text" name="subject" placeholder="Subject" value={form.subject} onChange={handleChange} required
+                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)]" />
+              <textarea name="message" placeholder="Message" value={form.message} onChange={handleChange} rows={6} required
+                className="w-full neuromorphic-inset bg-transparent text-white px-4 py-2 rounded-md border-none focus:ring-2 focus:ring-[var(--cyber-blue)] resize-none"></textarea>
+              <button type="submit"
+                className="w-full neuromorphic text-white font-semibold glow-effect hover:glow-effect transition-all duration-300 px-4 py-2 rounded-md">
                 Send Message
               </button>
             </form>
@@ -81,10 +66,7 @@ export default function ContactSection() {
             <div className="neuromorphic p-8 rounded-3xl">
               <h3 className="text-2xl font-bold text-[var(--cyber-pink)] mb-6 font-mono">Contact Information</h3>
               <div className="space-y-6">
-                <a
-                  href="mailto:sharathm6667@gmail.com"
-                  className="flex items-center space-x-4 hover:bg-white hover:bg-opacity-10 p-3 rounded-xl transition-all duration-300"
-                >
+                <a href="mailto:sharathm6667@gmail.com" className="flex items-center space-x-4 hover:bg-white hover:bg-opacity-10 p-3 rounded-xl transition-all duration-300">
                   <div className="w-12 h-12 neuromorphic-inset rounded-full flex items-center justify-center">
                     <Mail className="text-[var(--cyber-blue)]" size={20} />
                   </div>
@@ -95,10 +77,7 @@ export default function ContactSection() {
                     </p>
                   </div>
                 </a>
-                <a
-                  href="tel:+919380624311"
-                  className="flex items-center space-x-4 hover:bg-white hover:bg-opacity-10 p-3 rounded-xl transition-all duration-300"
-                >
+                <a href="tel:+919380624311" className="flex items-center space-x-4 hover:bg-white hover:bg-opacity-10 p-3 rounded-xl transition-all duration-300">
                   <div className="w-12 h-12 neuromorphic-inset rounded-full flex items-center justify-center">
                     <Phone className="text-[var(--cyber-pink)]" size={20} />
                   </div>
@@ -107,12 +86,8 @@ export default function ContactSection() {
                     <p className="text-gray-300 hover:text-[var(--cyber-pink)] transition-colors">+91 9380624311</p>
                   </div>
                 </a>
-                <a
-                  href="https://maps.app.goo.gl/PSzCao9NBmYGiDodA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-4 hover:bg-white hover:bg-opacity-10 p-3 rounded-xl transition-all duration-300"
-                >
+                <a href="https://maps.app.goo.gl/PSzCao9NBmYGiDodA" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center space-x-4 hover:bg-white hover:bg-opacity-10 p-3 rounded-xl transition-all duration-300">
                   <div className="w-12 h-12 neuromorphic-inset rounded-full flex items-center justify-center">
                     <MapPin className="text-[var(--cyber-purple)]" size={20} />
                   </div>
@@ -147,6 +122,17 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
+
+        {/* Notification */}
+        {showNotification && (
+          <Notification
+            type="success"
+            title="Message Sent!"
+            message="Thanks for reaching out. I’ll get back to you soon 🚀👨‍💻"
+            onClose={() => setShowNotification(false)}
+            duration={5000}
+          />
+        )}
       </div>
     </section>
   );
