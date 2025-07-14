@@ -34,33 +34,15 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [currentText, currentIndex, isDeleting]);
 
-  // Smooth scroll effect
-  useEffect(() => {
-    const handleAnchorClick = (e) => {
-      const target = e.target;
-      if (target.tagName === "A" && target.getAttribute("href")?.startsWith("#")) {
-        e.preventDefault();
-        const targetId = target.getAttribute("href").substring(1);
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }
-    };
-
-    document.addEventListener("click", handleAnchorClick);
-    return () => document.removeEventListener("click", handleAnchorClick);
-  }, []);
-
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0a0f] via-[#111122] to-[#0a0a0f] relative overflow-hidden text-white"
     >
       <div className="container mx-auto px-6 py-20 z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-10 md:space-y-0">
-          {/* Left Content */}
-          <div className="flex-1 space-y-6">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 text-center md:text-left">
+          {/* Left Content (Text and Buttons) */}
+          <div className="flex-1 space-y-6 flex flex-col items-center md:items-start">
             <div className="text-6xl md:text-8xl font-extrabold leading-tight bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-purple-600 bg-clip-text text-transparent font-mono animate-fade-in">
               SHARATH
             </div>
@@ -78,7 +60,8 @@ export default function Home() {
               Passionate about creating scalable solutions that push boundaries.
             </p>
 
-            <div className="flex gap-4 pt-4">
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="#contact"
                 className="px-6 py-3 rounded-full text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg hover:shadow-cyan-500/50 transition duration-300 font-semibold"
@@ -92,10 +75,22 @@ export default function Home() {
                 View Projects
               </a>
             </div>
+
+            {/* Profile Photo (Visible below buttons on mobile) */}
+            <div className="block md:hidden pt-6">
+              <div className="relative w-40 h-40 mx-auto rounded-full border-4 border-cyan-500 overflow-hidden shadow-xl shadow-cyan-500/30 hover:scale-105 transition">
+                <img
+                  src="https://avatars.githubusercontent.com/u/180433352?v=4"
+                  alt="Developer Portrait"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-transparent to-fuchsia-500/10 z-10 pointer-events-none" />
+              </div>
+            </div>
           </div>
 
-          {/* Right Image */}
-          <div className="flex-1 flex justify-center relative animate-fade-in-up">
+          {/* Right Image (Only on md and above) */}
+          <div className="hidden md:flex flex-1 justify-center relative animate-fade-in-up">
             <div className="relative w-80 h-80 rounded-full border-4 border-cyan-500 overflow-hidden shadow-xl shadow-cyan-500/30 hover:scale-105 transition">
               <img
                 src="https://avatars.githubusercontent.com/u/180433352?v=4"

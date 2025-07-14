@@ -26,36 +26,36 @@ export default function Project() {
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=600",
       tech: ["Python", "TensorFlow", "D3.js"],
     },
-    {
-      title: "Blockchain DApp",
-      description:
-        "Decentralized application built on Ethereum with smart contracts and Web3 integration.",
-      image:
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&h=600",
-      tech: ["Solidity", "Web3.js", "Ethereum"],
-    },
-    {
-      title: "Design System",
-      description:
-        "Comprehensive design system with reusable components, tokens, and documentation.",
-      image:
-        "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&h=600",
-      tech: ["Figma", "Storybook", "React"],
-    },
-    {
-      title: "IoT Monitoring System",
-      description:
-        "Real-time IoT device monitoring with data visualization and alert management.",
-      image:
-        "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&h=600",
-      tech: ["Python", "MQTT", "InfluxDB"],
-    },
+    // {
+    //   title: "Blockchain DApp",
+    //   description:
+    //     "Decentralized application built on Ethereum with smart contracts and Web3 integration.",
+    //   image:
+    //     "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&h=600",
+    //   tech: ["Solidity", "Web3.js", "Ethereum"],
+    // },
+    // {
+    //   title: "Design System",
+    //   description:
+    //     "Comprehensive design system with reusable components, tokens, and documentation.",
+    //   image:
+    //     "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&h=600",
+    //   tech: ["Figma", "Storybook", "React"],
+    // },
+    // {
+    //   title: "IoT Monitoring System",
+    //   description:
+    //     "Real-time IoT device monitoring with data visualization and alert management.",
+    //   image:
+    //     "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&h=600",
+    //   tech: ["Python", "MQTT", "InfluxDB"],
+    // },
   ];
 
   return (
     <section
       id="projects"
-      className="py-20 bg-gradient-to-br from-[#0d0c1d] to-[#141627] text-white"
+      className="min-h-screen py-20 bg-gradient-to-br from-[#0d0c1d] to-[#141627] text-white"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">

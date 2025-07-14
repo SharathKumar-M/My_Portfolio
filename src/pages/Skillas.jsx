@@ -47,39 +47,39 @@ export default function SkillsSection() {
         { name: "Android", level: 78, delay: 600 },
       ],
     },
-    {
-      icon: Palette,
-      title: "Design",
-      color: "cyber-green",
-      skills: [
-        { name: "UI/UX Design", level: 87, delay: 0 },
-        { name: "Figma", level: 85, delay: 200 },
-        { name: "Adobe XD", level: 80, delay: 400 },
-        { name: "Prototyping", level: 83, delay: 600 },
-      ],
-    },
-    {
-      icon: Server,
-      title: "DevOps",
-      color: "cyber-gold",
-      skills: [
-        { name: "AWS", level: 78, delay: 0 },
-        { name: "Docker", level: 82, delay: 200 },
-        { name: "Git", level: 90, delay: 400 },
-        { name: "CI/CD", level: 75, delay: 600 },
-      ],
-    },
-    {
-      icon: Globe,
-      title: "Other",
-      color: "cyber-cyan",
-      skills: [
-        { name: "Machine Learning", level: 70, delay: 0 },
-        { name: "Blockchain", level: 65, delay: 200 },
-        { name: "GraphQL", level: 80, delay: 400 },
-        { name: "REST APIs", level: 92, delay: 600 },
-      ],
-    },
+    // {
+    //   icon: Palette,
+    //   title: "Design",
+    //   color: "cyber-green",
+    //   skills: [
+    //     { name: "UI/UX Design", level: 87, delay: 0 },
+    //     { name: "Figma", level: 85, delay: 200 },
+    //     { name: "Adobe XD", level: 80, delay: 400 },
+    //     { name: "Prototyping", level: 83, delay: 600 },
+    //   ],
+    // },
+    // {
+    //   icon: Server,
+    //   title: "DevOps",
+    //   color: "cyber-gold",
+    //   skills: [
+    //     { name: "AWS", level: 78, delay: 0 },
+    //     { name: "Docker", level: 82, delay: 200 },
+    //     { name: "Git", level: 90, delay: 400 },
+    //     { name: "CI/CD", level: 75, delay: 600 },
+    //   ],
+    // },
+    // {
+    //   icon: Globe,
+    //   title: "Other",
+    //   color: "cyber-cyan",
+    //   skills: [
+    //     { name: "Machine Learning", level: 70, delay: 0 },
+    //     { name: "Blockchain", level: 65, delay: 200 },
+    //     { name: "GraphQL", level: 80, delay: 400 },
+    //     { name: "REST APIs", level: 92, delay: 600 },
+    //   ],
+    // },
   ];
 
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-[var(--space-dark)] to-[var(--space-navy)]">
+    <section id="skills" className="min-h-screen py-20 bg-gradient-to-br from-[var(--space-dark)] to-[var(--space-navy)]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-gradient mb-6 font-mono">
