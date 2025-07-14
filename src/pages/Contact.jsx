@@ -102,7 +102,7 @@ export default function ContactSection() {
                 hoverColor="text-[var(--cyber-pink)]"
               />
               <ContactItem
-                href="https://maps.app.goo.gl/PSzCao9NBmYGiDodA"
+                href="https://maps.app.goo.gl/yYw83t3YkFFa9pwaA"
                 icon={<MapPin className="text-[var(--cyber-purple)]" size={20} />}
                 label="Location"
                 value="Tiptur, India"
